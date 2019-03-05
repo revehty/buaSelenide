@@ -8,7 +8,7 @@ import static com.codeborne.selenide.Selenide.close;
 import static com.codeborne.selenide.Selenide.open;
 
 public class Auth {
-    String url = "https://admin.bua.dev.norse.digital/login";
+
 //
 //    public static void main(String[] args) {
 //        Configuration.browser = "chrome";
@@ -20,24 +20,28 @@ public class Auth {
 
     @Test
     public void test1() throws InterruptedException {
-        open(url);
-        new AuthorisationPage().login("admin" , "publish");
-        close();
-
-
-//        Thread.sleep(5000);
+        Dashboard dashboard = new Dashboard();
+        dashboard.locationsMenuItem.click();
+        
+        Thread.sleep(5000);
     }
 
-    @Test
-    public void test2() throws InterruptedException {
-        open(url);
-        new AuthorisationPage().invalidLogin("admin000" , "publish");
-        ShopBuilder shopBuilder = new ShopBuilder();
-        shopBuilder.selectShopType();
-    }
+//    @Test
+//    public void test2() throws InterruptedException {
+//        new AuthorisationPage().invalidLogin("admin000" , "publish");
+//        ShopBuilder shopBuilder = new ShopBuilder();
+//        shopBuilder.selectShopType();
+//    }
 
     @BeforeMethod
-    public void setupBrowser(){
+    public void setupBrowser() throws InterruptedException{
         Configuration.browser = "chrome";
+        System.setProperty("webdriver.chrome.driver", "/home/ik/projects/bua/chromedriver/chromedriver");
+        System.setProperty("selenide.browser", "chrome");
+        String url = "https://admin.bua.dev.norse.digital/login";
+        open(url);
+        new AuthorisationPage().login("admin", "publish");
+        Thread.sleep(5000);
     }
+
 }

@@ -16,9 +16,9 @@ public class AuthorisationPage {
         usernameLocator.waitUntil(Condition.visible, maxWaitTime).setValue(username);
     }
 
-    private void setUsername (){
-        usernameLocator.waitUntil(Condition.visible, maxWaitTime).setValue("");
-    }
+//    private void setUsername (){
+//        usernameLocator.waitUntil(Condition.visible, maxWaitTime).setValue("");
+//    }
 
 
 
@@ -30,8 +30,8 @@ public class AuthorisationPage {
         loginButton.click();
     }
 
-    public void login(String username , String password ){
-        setUsername(username);
+    public void login(String usernam , String password ){
+        setUsername(usernam);
         setPassword(password);
         clickOnLoginButton();
     }
